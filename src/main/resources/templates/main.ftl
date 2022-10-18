@@ -3,6 +3,8 @@
 
 
 <@c.page>
+<#if isAdmin>
+
 <div class="form-row">
     <div class="form-group col-md-6">
         <form method="get" action="/main" class="form-inline">
@@ -11,12 +13,11 @@
         </form>
     </div>
 </div>
-<#if !isAdmin>
-    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Add new Message
-    </a>
+</#if>
 
-<div class="collapse" id="collapseExample">
+<#if isUser>
+
+<div>
     <div class="form-group mt-3">
         <form method="post" enctype="multipart/form-data">
             <div class="form-group">

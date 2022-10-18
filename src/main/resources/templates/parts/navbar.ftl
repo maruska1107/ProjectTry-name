@@ -12,14 +12,16 @@
             <li class="nav-item">
                 <a class="nav-link" href="/">Home</a>
             </li>
-
+            <#if isAdmin>
             <li class="nav-item">
                 <a class="nav-link" href="/main">Messages</a>
             </li>
+            </#if>
+            <#if isUser>
             <li class="nav-item">
                 <a class="nav-link" href="/user-messages/${currentUserId}">My Requests</a>
             </li>
-
+            </#if>
             <#if isAdmin>
             <li class="nav-item">
                 <a class="nav-link" href="/user">User list</a>
