@@ -12,17 +12,18 @@
             <li class="nav-item">
                 <a class="nav-link" href="/">Home</a>
             </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="/main">Messages</a>
-            </li>
-
             <#if isUser>
+            <li class="nav-item">
+                <a class="nav-link" href="/main">Add request</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/user-messages/${currentUserId}">My Requests</a>
             </li>
             </#if>
             <#if isAdmin>
+            <li class="nav-item">
+                <a class="nav-link" href="/main">Requests</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/user">User list</a>
             </li>

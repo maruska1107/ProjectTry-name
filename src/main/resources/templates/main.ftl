@@ -23,9 +23,23 @@
             <div class="form-group">
                 <input type="text" class="form-control" name="text" placeholder="Введите сообщение" />
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="tag" placeholder="Тэг">
+
+
+
+            <div class="input-group">
+              <select class="form-select" id="inputGroupSelect01" name="tag">
+                <option selected>Выберите...</option>
+                <option value="Установка компьютера">Установка компьютера</option>
+                <option value="Ремонт компьютера">Ремонт компьютера</option>
+                <option value="Диагностика компьютера">Диагностика компьютера</option>
+                <option value="Установка ОС">Установка ОС</option>
+                <option value="Установка программ">Установка программ</option>
+                <option value="Подключение к Интернету">Подключение к Интернету</option>
+                <option value="Срочный ремонт компьютеров">Срочный ремонт компьютеров</option>
+              </select>
             </div>
+
+
             <div class="form-group">
                 <div class="custom-file">
                     <input type="file" name="file" id="customFile">
