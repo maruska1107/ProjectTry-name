@@ -10,22 +10,22 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/">Главная</a>
             </li>
             <#if isUser>
             <li class="nav-item">
-                <a class="nav-link" href="/main">Add request</a>
+                <a class="nav-link" href="/main">Создать заявку</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/user-messages/${currentUserId}">My Requests</a>
+                <a class="nav-link" href="/user-messages/${currentUserId}">Мои обращения</a>
             </li>
             </#if>
             <#if isAdmin>
             <li class="nav-item">
-                <a class="nav-link" href="/main">Requests</a>
+                <a class="nav-link" href="/main">Заявки</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/user">User list</a>
+                <a class="nav-link" href="/user">Список пользователей</a>
             </li>
             </#if>
         </ul>
