@@ -22,11 +22,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
-
 import java.util.UUID;
 
 @Controller
@@ -46,8 +44,8 @@ public class MessageController {
 
     @GetMapping("/main")
     public String main(@RequestParam(required = false, defaultValue = "")
-                           String filter, Model model,
-                       @PageableDefault(sort={"id"},direction = Sort.Direction.DESC) Pageable pageable) {
+                               String filter, Model model,
+                       @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable) {
         Page<Message> page = messageService.messageList(pageable, filter);
         model.addAttribute("page", page);
         model.addAttribute("url", "/main");
@@ -68,8 +66,8 @@ public class MessageController {
 
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String data =date.format(formatter);
-        Message message = new Message(text, tag, user,data);
+        String data = date.format(formatter);
+        Message message = new Message(text, tag, user, data);
 
         saveFile(file, message);
 
@@ -83,6 +81,7 @@ public class MessageController {
 
 
     }
+
     private void saveFile(MultipartFile file, Message message) throws IOException {
         if (file != null && !file.getOriginalFilename().isEmpty()) {
             File uploadDir = new File(uploadPath);
@@ -106,7 +105,7 @@ public class MessageController {
             @PathVariable User author,
             Model model,
             @RequestParam(required = false) Message message,
-            @PageableDefault(sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable
+            @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable
     ) {
         Page<Message> page = messageService.messageListForUser(pageable, currentUser, author);
 
@@ -120,22 +119,13 @@ public class MessageController {
     }
 
 
-
-
-
-
-
-
-
-
-
     @GetMapping("/edit-messages/{author}")
     public String editMessges(
             @AuthenticationPrincipal User currentUser,
             @PathVariable User author,
             Model model,
             @RequestParam(required = false) Message message,
-            @PageableDefault(sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable
+            @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable
     ) {
         Page<Message> page = messageService.messageListForUser(pageable, currentUser, author);
 
@@ -147,6 +137,7 @@ public class MessageController {
 
         return "editMessages";
     }
+
     @PostMapping("/edit-messages/{user}")
     public String updateMessage(
             @PathVariable Long user,

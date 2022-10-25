@@ -1,6 +1,7 @@
 package com.example.sweater.domain;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Message {
@@ -14,11 +15,9 @@ public class Message {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User author;
-
     private String filename;
-
-
     private String data;
+
 
 
     public Message() {
