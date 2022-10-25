@@ -22,9 +22,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
-import java.util.Set;
+
 import java.util.UUID;
 
 @Controller
@@ -62,7 +64,12 @@ public class MessageController {
             @RequestParam("file") MultipartFile file
 
     ) throws IOException {
-        Message message = new Message(text, tag, user);
+        LocalDate date = LocalDate.now();
+
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String data =date.format(formatter);
+        Message message = new Message(text, tag, user,data);
 
         saveFile(file, message);
 
@@ -142,7 +149,6 @@ public class MessageController {
     }
     @PostMapping("/edit-messages/{user}")
     public String updateMessage(
-            @AuthenticationPrincipal User currentUser,
             @PathVariable Long user,
             @RequestParam("id") Message message,
             @RequestParam("text") String text,

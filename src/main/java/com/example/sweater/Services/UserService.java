@@ -22,13 +22,20 @@ public class UserService implements UserDetailsService {
     }
     public boolean addUser(User user) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
+        String name = user.getName();
+        String family = user.getFamily();
+        String patronymic = user.getPatronymic();
+        String email = user.getEmail();
+        String phone = user.getPhone();
+        String address = user.getAddress();
+
         if (userFromDb != null) {
             return false;
         }
 
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
-
+        
         userRepo.save(user);
         return true;
 

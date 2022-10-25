@@ -16,14 +16,28 @@ public class Message {
     private User author;
 
     private String filename;
+
+
+    private String data;
+
+
     public Message() {
     }
 
-    public Message(String text, String tag, User user) {
+    public Message(String text, String tag, User user,String data) {
         this.author = user;
         this.text = text;
         this.tag = tag;
+        this.data=data;
+    }
 
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     public String getAuthorName() {
