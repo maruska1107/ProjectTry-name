@@ -17,19 +17,28 @@ public class Message {
     private User author;
     private String filename;
     private String data;
+    private String status;
 
 
 
     public Message() {
     }
 
-    public Message(String text, String tag, User user,String data) {
+    public Message(String text, String tag, User user,String data,String status) {
         this.author = user;
         this.text = text;
         this.tag = tag;
         this.data=data;
+        this.status=status;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        status = status;
+    }
 
     public String getData() {
         return data;

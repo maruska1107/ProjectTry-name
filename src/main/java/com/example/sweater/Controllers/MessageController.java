@@ -67,7 +67,8 @@ public class MessageController {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String data = date.format(formatter);
-        Message message = new Message(text, tag, user, data);
+        String status ="Отправлено";
+        Message message = new Message(text, tag, user, data,status);
 
         saveFile(file, message);
 

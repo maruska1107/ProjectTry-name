@@ -10,8 +10,9 @@
             </#if>
             <div class="m-2">
                 <span>${message.text}</span><br/><br/>
-                <i>Причина обращения: ${message.tag}</i>
-                <i>Дата обращения: ${message.data}</i>
+                <i>Причина обращения: ${message.tag}</i><br/>
+                <i>Дата обращения: ${message.data}</i><br/>
+                <i>Cтатус: ${message.status}</i>
             </div>
 
     <#if isAdmin>
