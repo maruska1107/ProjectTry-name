@@ -11,6 +11,7 @@
             <div class="m-2">
                 <span>${message.text}</span><br/><br/>
                 <i>Причина обращения: ${message.tag}</i>
+                <i>Дата обращения: ${message.data}</i>
             </div>
 
     <#if isAdmin>
