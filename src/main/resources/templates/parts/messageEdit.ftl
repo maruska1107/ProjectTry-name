@@ -1,45 +1,82 @@
 <div class="collapse <#if message??>show</#if>" id="collapseExample">
-    <div class="form-group mt-3">
-        <form method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <input type="text" class="form-control ${(textError??)?string('is-invalid', '')}"
-                       value="<#if message??>${message.text}</#if>" name="text" placeholder="Введите сообщение" />
-                <#if textError??>
-                    <div class="invalid-feedback">
-                        ${textError}
-                    </div>
-                </#if>
-            </div>
-            <div class="input-group" >
-               <select class="form-select" value="<#if message??>${message.tag}</#if>" name="tag" placeholder="Тэг"> id="inputGroupSelect01">
-                            <option selected>Выберите...</option>
-                            <option value="Установка компьютера">Установка компьютера</option>
-                            <option value="Ремонт компьютера">Ремонт компьютера</option>
-                            <option value="Диагностика компьютера">Диагностика компьютера</option>
-                            <option value="Установка ОС">Установка ОС</option>
-                            <option value="Установка программ">Установка программ</option>
-                            <option value="Подключение к Интернету">Подключение к Интернету</option>
-                            <option value="Срочный ремонт компьютеров">Срочный ремонт компьютеров</option>
-               </select>
-            </div>
-                <#if tagError??>
-                    <div class="invalid-feedback">
-                        ${tagError}
-                    </div>
-                </#if>
-            </div>
-            <div class="form-group">
-                <div class="custom-file">
-                    <input type="file" name="file" id="customFile">
-                    <label class="custom-file-label" for="customFile">Выбрать файл</label>
-                </div>
-            </div>
+<div class="text-center">
+<h5 class="card-title">Редактирование заявки</h5>
+</div>
 
-            <input type="hidden" name="_csrf" value="${_csrf.token}" />
-            <input type="hidden" name="id" value="<#if message??>${message.id}</#if>" />
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Сохранить сообщение</button>
-            </div>
-        </form>
+<div class="container">
+  <div class="row">
+
+    <div class="col-6">
+        <div class="list-group my-4">
+            <li class="list-group-item list-group-item-success">Информация о пользователе</li>
+            <li class="list-group-item">${message.authorName}</li>
+            <li class="list-group-item">${message.authorNname}</li>
+            <li class="list-group-item">${message.authorFamily}</li>
+            <li class="list-group-item">${message.authorPatronymic}</li>
+            <li class="list-group-item">${message.authorEmail}</li>
+            <li class="list-group-item">${message.authorNumber}</li>
+            <li class="list-group-item">${message.authorAdress}</li>
+        </div>
     </div>
+
+    <div class="col-6">
+        <div class="list-group my-4">
+            <li class="list-group-item list-group-item-info">Информация по заявке</li>
+            <li class="list-group-item">${message.id}</li>
+            <li class="list-group-item">${message.text}</li>
+            <li class="list-group-item">${message.tag}</li>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="list-group my-4">
+            <li class="list-group-item list-group-item-warning">Информация о сотруднике</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Назначить сотрудника
+            </button>
+              <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+              </div>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+<ul class="list-group list-group-light">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <div>
+      <div class="fw-bold">John Doe</div>
+
+    </div>
+    <span class="badge rounded-pill badge-success">Active</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <div>
+      <div class="fw-bold">Alex Ray</div>
+
+    </div>
+    <span class="badge rounded-pill badge-primary">Onboarding</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <div>
+      <div class="fw-bold">Kate Hunington</div>
+    </div>
+    <span class="badge rounded-pill badge-warning">Awaiting</span>
+  </li>
+</ul>
+
 </div>

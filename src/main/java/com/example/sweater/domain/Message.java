@@ -1,7 +1,6 @@
 package com.example.sweater.domain;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 public class Message {
@@ -50,6 +49,27 @@ public class Message {
 
     public String getAuthorName() {
         return author != null ? author.getUsername() : "<none>";
+    }
+    public String getAuthorNname() {
+        return author != null ? author.getName() : "<none>";
+    }
+
+    public String getAuthorFamily() {
+        return author != null ? author.getFamily() : "<none>";
+    }
+
+    public String getAuthorPatronymic() {
+        return author != null ? author.getPatronymic() : "<none>";
+    }
+    public String getAuthorEmail() {
+        return author != null ? author.getEmail() : "<none>";
+    }
+    public String getAuthorNumber() {
+        return author != null ? author.getPhone() : "<none>";
+    }
+
+    public String getAuthorAdress() {
+        return author != null ? author.getAddress() : "<none>";
     }
 
     public User getAuthor() {
