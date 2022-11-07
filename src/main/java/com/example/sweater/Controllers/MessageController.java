@@ -2,8 +2,10 @@ package com.example.sweater.Controllers;
 
 import com.example.sweater.Services.MessageService;
 import com.example.sweater.domain.Message;
+import com.example.sweater.domain.Role;
 import com.example.sweater.domain.User;
 import com.example.sweater.repos.MessageRepo;
+import com.example.sweater.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -31,6 +33,9 @@ import java.util.UUID;
 public class MessageController {
     @Autowired
     private MessageRepo messageRepo;
+
+    @Autowired
+    private UserRepo userRepo;
 
     @Autowired
     private MessageService messageService;
@@ -124,6 +129,7 @@ public class MessageController {
     public String editMessges(
             @AuthenticationPrincipal User currentUser,
             @PathVariable User author,
+
             Model model,
             @RequestParam(required = false) Message message,
             @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable
@@ -136,6 +142,8 @@ public class MessageController {
         model.addAttribute("message", message);
         model.addAttribute("isCurrentUser", currentUser.equals(author));
         model.addAttribute("url", "/user-messages/" + author.getId());
+
+        model.addAttribute("users", userRepo.findAll());
 
         return "editMessages";
     }

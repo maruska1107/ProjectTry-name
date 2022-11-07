@@ -10,9 +10,10 @@ import org.springframework.data.repository.query.Param;
 
 
 public interface MessageRepo extends CrudRepository<Message, Long> {
-
     Page<Message> findAll(Pageable pageable);
     Page<Message> findByTag(String tag, Pageable pageable);
     @Query("from Message m where m.author = :author")
     Page<Message> findByUser(Pageable pageable,  @Param("author") User author);
+
+
 }

@@ -32,23 +32,23 @@
         <div class="list-group my-4">
             <li class="list-group-item list-group-item-warning">Информация о сотруднике</li>
             <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Назначить сотрудника
             </button>
               <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
-              </div>
+                    <#list users as user>
+                    <a class="dropdown-item" href="#">${message}</a>
+                    </#list>
         </div>
     </div>
 
   </div>
 </div>
+
+
+
+
+
 
 
 

@@ -24,7 +24,6 @@ public class UserController {
     @GetMapping
     public String userList(Model model) {
         model.addAttribute("users", userRepo.findAll());
-
         return "userList";
     }
 
@@ -40,21 +39,21 @@ public class UserController {
     public String userSave(
             @RequestParam String username,
             @RequestParam Map<String, String> form,
-            @RequestParam("userId") User user,
-            @RequestParam String name,
-            @RequestParam String  family,
-            @RequestParam String  patronymic,
-            @RequestParam String  email,
-            @RequestParam String  phone,
-            @RequestParam String  address
+            @RequestParam("userId") User user
+//            @RequestParam String name,
+//            @RequestParam String  family,
+//            @RequestParam String  patronymic,
+//            @RequestParam String  email,
+//            @RequestParam String  phone,
+//            @RequestParam String  address
     ) {
         user.setUsername(username);
-        user.setName(name);
-        user.setFamily(family);
-        user.setPatronymic(patronymic);
-        user.setEmail(email);
-        user.setPhone(phone);
-        user.setAddress(address);
+//        user.setName(name);
+//        user.setFamily(family);
+//        user.setPatronymic(patronymic);
+//        user.setEmail(email);
+//        user.setPhone(phone);
+//        user.setAddress(address);
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name)
                 .collect(Collectors.toSet());
