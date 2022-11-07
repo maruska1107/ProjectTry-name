@@ -169,7 +169,6 @@ public class MessageController {
 
         messageRepo.save(message);
 
-
         return "redirect:/user-messages/" + user;
     }
 
