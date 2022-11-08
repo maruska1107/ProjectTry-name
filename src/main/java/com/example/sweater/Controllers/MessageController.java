@@ -59,6 +59,7 @@ public class MessageController {
         return "main";
     }
 
+
     @PostMapping("/main")
     public String add(
             @AuthenticationPrincipal User user,
@@ -68,8 +69,6 @@ public class MessageController {
 
     ) throws IOException {
         LocalDate date = LocalDate.now();
-
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String data = date.format(formatter);
         String status ="Отправлено";
@@ -150,12 +149,15 @@ public class MessageController {
 
     @PostMapping("/edit-messages/{user}")
     public String updateMessage(
-            @PathVariable Long user,
+            @PathVariable User user,
             @RequestParam("id") Message message,
             @RequestParam("text") String text,
             @RequestParam("tag") String tag,
             @RequestParam("file") MultipartFile file
     ) throws IOException {
+
+            message.setAuthor(user);
+
 
         if (!StringUtils.isEmpty(text)) {
             message.setText(text);
@@ -169,7 +171,8 @@ public class MessageController {
 
         messageRepo.save(message);
 
-        return "redirect:/user-messages/" + user;
+
+        return "redirect:/main";
     }
 
 }

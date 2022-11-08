@@ -5,6 +5,7 @@
 <@c.page>
 
 <#if isAdmin>
+
 <div class="form-row">
     <div class="form-group col-md-6">
         <form method="get" action="/main" class="form-inline">
@@ -56,6 +57,7 @@
                     <label class="custom-file-label" for="customFile">Выбрать файл</label>
                 </div>
             </div>
+
             <input type="hidden" name="_csrf" value="${_csrf.token}" />
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Добавить</button>
