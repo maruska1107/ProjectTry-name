@@ -37,7 +37,7 @@ public class Message {
     }
 
     public void setStatus(String status) {
-        status = status;
+        this.status=status;
     }
 
     public String getData() {

@@ -142,7 +142,7 @@ public class MessageController {
         model.addAttribute("isCurrentUser", currentUser.equals(author));
         model.addAttribute("url", "/user-messages/" + author.getId());
 
-        model.addAttribute("users", userRepo.findAll());
+        model.addAttribute("users", userRepo.findByRole());
 
         return "editMessages";
     }
@@ -155,6 +155,8 @@ public class MessageController {
             @RequestParam("tag") String tag,
             @RequestParam("file") MultipartFile file
     ) throws IOException {
+
+            message.setStatus("В процессе");
 
             message.setAuthor(user);
 
