@@ -18,9 +18,6 @@
                 </div>
             </div>
 
-
-
-
 <h5 class="card-title">Редактирование заявки</h5>
 <div class="container">
   <div class="row">
@@ -50,7 +47,7 @@
     <div class="col-6">
         <div class="list-group my-4">
             <li class="list-group-item list-group-item-warning">Информация о сотруднике</li>
-            <li class="list-group-item">${message.employeeName}</li>
+            <li class="list-group-item">${message.authorName}</li>
             <li class="list-group-item">${message.employeeNname}</li>
             <li class="list-group-item">${message.employeeFamily}</li>
             <li class="list-group-item">${message.employeePatronymic}</li>
@@ -60,18 +57,15 @@
                 Назначить сотрудника
             </button>
 
-
-
             <input type="hidden" name="_csrf" value="${_csrf.token}" />
             <input type="hidden" name="id" value="<#if message??>${message.id}</#if>" />
-
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                <button type="submit" class="btn btn-primary">Save message</button>
             </div>
 
                 <div class="dropdown-menu">
                     <#list users as user>
-                    <button class="dropdown-item" type="submit" href="/edit-messages/${user.id}?message=${message.id}">${user.id} ${user.username}</a>
+                    <a class="dropdown-item" href="/edit-messages/${user.id}?message=${message.id}">${user.id} ${user.username}</a>
                     </#list>
                 </div>
 

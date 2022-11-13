@@ -9,6 +9,7 @@
         isAdmin = user.isAdmin()
         currentUserId = user.getId()
         isUser = user.isUser()
+        isEmployee = user.isEmployee()
     >
 <#else>
     <#assign
@@ -16,5 +17,6 @@
         isAdmin = false
         currentUserId = -1
         isUser = false
+        isEmployee = false
     >
 </#if>

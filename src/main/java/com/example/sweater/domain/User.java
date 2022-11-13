@@ -34,6 +34,8 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "author", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     private Set<Message> messages;
 
+//    @OneToOne(mappedBy = "emp", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private Employee employee;
 
     @Override
     public boolean equals(Object o) {
@@ -50,6 +52,10 @@ public class User implements UserDetails {
 
     public boolean isAdmin() {
         return roles.contains(Role.ADMIN);
+    }
+
+    public boolean isEmployee() {
+        return roles.contains(Role.EMPLOYEE);
     }
     public Long getId() {
         return id;

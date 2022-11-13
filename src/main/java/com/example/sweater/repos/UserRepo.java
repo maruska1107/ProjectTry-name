@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface UserRepo extends JpaRepository<User, Long> {
     User findByUsername(String username);
-
     @Query(value = "SELECT * FROM usr u JOIN user_role ur on u.id=ur.user_id WHERE ur.roles='EMPLOYEE'", nativeQuery = true)
     List<User> findByRole();
 }

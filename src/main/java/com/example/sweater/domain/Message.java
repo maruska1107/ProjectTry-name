@@ -13,8 +13,9 @@ public class Message {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
-
     private User author;
+
+
     private String filename;
     private String data;
     private String status;
@@ -22,8 +23,6 @@ public class Message {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "emploee_id")
     private User employee;
-
-
 
     public Message() {
     }
@@ -45,19 +44,6 @@ public class Message {
     }
 
 
-
-    public String getEmployeeName() {
-        return employee != null ? employee.getUsername() : "<none>";
-    }
-    public String getEmployeeNname() {
-        return employee != null ? employee.getName() : "<none>";
-    }
-    public String getEmployeeFamily() {
-        return employee != null ? employee.getFamily() : "<none>";
-    }
-    public String getEmployeePatronymic() {
-        return employee != null ? employee.getPatronymic() : "<none>";
-    }
 
     public String getStatus() {
         return status;
@@ -132,9 +118,20 @@ public class Message {
     public String getFilename() {
         return filename;
     }
-
-
     public void setFilename(String filename) {
         this.filename = filename;
+    }
+
+    public String getEmployeeName() {
+        return employee != null ? employee.getUsername() : "<none>";
+    }
+    public String getEmployeeNname() {
+        return employee != null ? employee.getName() : "<none>";
+    }
+    public String getEmployeeFamily() {
+        return employee != null ? employee.getFamily() : "<none>";
+    }
+    public String getEmployeePatronymic() {
+        return employee != null ? employee.getPatronymic() : "<none>";
     }
 }
