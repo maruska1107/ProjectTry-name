@@ -50,7 +50,10 @@
     <div class="col-6">
         <div class="list-group my-4">
             <li class="list-group-item list-group-item-warning">Информация о сотруднике</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">${message.employeeName}</li>
+            <li class="list-group-item">${message.employeeNname}</li>
+            <li class="list-group-item">${message.employeeFamily}</li>
+            <li class="list-group-item">${message.employeePatronymic}</li>
 
 
             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
