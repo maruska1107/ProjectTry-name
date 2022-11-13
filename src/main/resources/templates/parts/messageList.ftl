@@ -24,7 +24,10 @@
                         <a class="col btn btn-success" href="/edit-messages/${message.author.id}?message=${message.id}">
                             Подробнее...
                         </a>
+
                 </div>
+                <div class="row">
+                <a class="col text-info align-self-left" href="">${message.employeeName}</a></div>
             </div>
     </#if>
         </div>

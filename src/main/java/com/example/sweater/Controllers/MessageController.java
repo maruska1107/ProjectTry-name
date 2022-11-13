@@ -123,6 +123,25 @@ public class MessageController {
         return "userMessages";
     }
 
+    @GetMapping("/employee-messages/{author}")
+    public String employeeMessqges(
+            @AuthenticationPrincipal User currentUser,
+            @PathVariable User author,
+            Model model,
+            @RequestParam(required = false) Message message,
+            @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable
+    ) {
+        Page<Message> page = messageService.messageListForEmployee(pageable, currentUser, author);
+
+        model.addAttribute("userChannel", author);
+        model.addAttribute("page", page);
+        model.addAttribute("message", message);
+        model.addAttribute("isCurrentUser", currentUser.equals(author));
+        model.addAttribute("url", "/user-messages/" + author.getId());
+
+        return "userMessages";
+    }
+
 
     @GetMapping("/edit-messages/{author}")
     public String editMessges(

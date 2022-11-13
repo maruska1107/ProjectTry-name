@@ -24,4 +24,8 @@ public class MessageService {
     public Page<Message> messageListForUser(Pageable pageable, User currentUser, User author) {
         return messageRepo.findByUser(pageable,author);
     }
+
+    public Page<Message> messageListForEmployee(Pageable pageable, User currentUser, User employee) {
+        return messageRepo.findByEmployee(pageable,employee);
+    }
 }

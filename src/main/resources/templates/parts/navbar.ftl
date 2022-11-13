@@ -31,7 +31,7 @@
 
             <#if isEmployee>
             <li class="nav-item">
-                <a class="nav-link" href="/user-messages/${currentUserId}">Мои обращения</a>
+                <a class="nav-link" href="/employee-messages/${currentUserId}">Мои обращения</a>
             </li>
             </#if>
         </ul>
