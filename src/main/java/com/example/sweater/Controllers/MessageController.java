@@ -158,7 +158,7 @@ public class MessageController {
 
             message.setStatus("В процессе");
 
-            message.setAuthor(user);
+            message.setEmployee(user);
 
 
         if (!StringUtils.isEmpty(text)) {

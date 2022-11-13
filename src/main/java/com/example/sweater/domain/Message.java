@@ -19,6 +19,10 @@ public class Message {
     private String data;
     private String status;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "emploee_id")
+    private User employee;
+
 
 
     public Message() {
@@ -30,6 +34,29 @@ public class Message {
         this.tag = tag;
         this.data=data;
         this.status=status;
+    }
+
+    public User getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(User employee) {
+        this.employee = employee;
+    }
+
+
+
+    public String getEmployeeName() {
+        return employee != null ? employee.getUsername() : "<none>";
+    }
+    public String getEmployeeNname() {
+        return employee != null ? employee.getName() : "<none>";
+    }
+    public String getEmployeeFamily() {
+        return employee != null ? employee.getFamily() : "<none>";
+    }
+    public String getEmployeePatronymic() {
+        return employee != null ? employee.getPatronymic() : "<none>";
     }
 
     public String getStatus() {
@@ -54,11 +81,9 @@ public class Message {
     public String getAuthorNname() {
         return author != null ? author.getName() : "<none>";
     }
-
     public String getAuthorFamily() {
         return author != null ? author.getFamily() : "<none>";
     }
-
     public String getAuthorPatronymic() {
         return author != null ? author.getPatronymic() : "<none>";
     }
@@ -68,7 +93,6 @@ public class Message {
     public String getAuthorNumber() {
         return author != null ? author.getPhone() : "<none>";
     }
-
     public String getAuthorAdress() {
         return author != null ? author.getAddress() : "<none>";
     }
