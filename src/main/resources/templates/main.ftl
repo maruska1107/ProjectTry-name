@@ -12,7 +12,7 @@
 
         <div class="input-group">
               <select class="form-select" id="inputGroupSelect01" name="filter">
-                <option selected>Выберите...</option>
+                <option selected>Поиск по причине</option>
                 <option value="Установка компьютера">Установка компьютера</option>
                 <option value="Ремонт компьютера">Ремонт компьютера</option>
                 <option value="Диагностика компьютера">Диагностика компьютера</option>

@@ -166,29 +166,15 @@ public class MessageController {
         return "editMessages";
     }
 
-    @PostMapping("/edit-messages/{user}")
+    @PostMapping("/edit-messages/{employee}")
     public String updateMessage(
-            @PathVariable User user,
-            @RequestParam("id") Message message,
-            @RequestParam("text") String text,
-            @RequestParam("tag") String tag,
-            @RequestParam("file") MultipartFile file
+            @PathVariable User employee,
+            @RequestParam("id") Message message
     ) throws IOException {
 
             message.setStatus("В процессе");
 
-            message.setEmployee(user);
-
-
-        if (!StringUtils.isEmpty(text)) {
-            message.setText(text);
-        }
-
-        if (!StringUtils.isEmpty(tag)) {
-            message.setTag(tag);
-        }
-
-        saveFile(file, message);
+            message.setEmployee(employee);
 
         messageRepo.save(message);
 

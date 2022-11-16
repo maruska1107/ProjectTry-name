@@ -2,22 +2,7 @@
 <div class="collapse <#if message??>show</#if>" id="collapseExample">
     <div class="form-group mt-3 visibility: hidden">
         <form method="post" enctype="multipart/form-data" >
-            <div class="form-group">
-                <input type="hidden" class="form-control ${(textError??)?string('is-invalid', '')}"
-                       value="<#if message??>${message.text}</#if>" name="text" placeholder="Введите сообщение" />
 
-            </div>
-            <div class="form-group">
-                <input type="hidden" class="form-control"
-                       value="<#if message??>${message.tag}</#if>" name="tag" placeholder="Тэг">
-
-            </div>
-            <div class="form-group">
-                <div class="custom-file">
-                    <input type="file" name="file" id="customFile">
-                    <label class="custom-file-label " for="customFile">Choose file</label>
-                </div>
-            </div>
 
 <h5 class="card-title">Редактирование заявки</h5>
 <div class="container">
@@ -58,13 +43,14 @@
 
             <input type="hidden" name="_csrf" value="${_csrf.token}" />
             <input type="hidden" name="id" value="<#if message??>${message.id}</#if>" />
+
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Save message</button>
             </div>
 
                 <div class="dropdown-menu">
                     <#list users as user>
-                    <a class="dropdown-item" href="/edit-employee/${user.id}?message=${message.id}">${user.id} ${user.username}</a>
+                    <a class="dropdown-item" href="/edit-messages/${user.id}?message=${message.id}">${user.id} ${user.username}</a>
                     </#list>
                 </div>
         </div>
@@ -78,9 +64,3 @@
 
     </div>
 </div>
-
-
-
-
-
-
