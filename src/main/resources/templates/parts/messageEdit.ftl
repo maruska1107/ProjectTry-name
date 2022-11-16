@@ -1,3 +1,4 @@
+<#include "security.ftl">
 <div class="collapse <#if message??>show</#if>" id="collapseExample">
     <div class="form-group mt-3 visibility: hidden">
         <form method="post" enctype="multipart/form-data" >
@@ -43,7 +44,7 @@
             <li class="list-group-item">${message.tag}</li>
         </div>
     </div>
-
+    <#if isAdmin>
     <div class="col-6">
         <div class="list-group my-4">
             <li class="list-group-item list-group-item-warning">Информация о сотруднике</li>
@@ -51,8 +52,6 @@
             <li class="list-group-item">${message.employeeNname}</li>
             <li class="list-group-item">${message.employeeFamily}</li>
             <li class="list-group-item">${message.employeePatronymic}</li>
-
-
             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Назначить сотрудника
             </button>
@@ -65,15 +64,18 @@
 
                 <div class="dropdown-menu">
                     <#list users as user>
-                    <a class="dropdown-item" href="/edit-messages/${user.id}?message=${message.id}">${user.id} ${user.username}</a>
+                    <a class="dropdown-item" href="/edit-employee/${user.id}?message=${message.id}">${user.id} ${user.username}</a>
                     </#list>
                 </div>
-
+        </div>
     </div>
-  </div>
+</form>
+
+</#if>
 </div>
 
-        </form>
+
+
     </div>
 </div>
 
