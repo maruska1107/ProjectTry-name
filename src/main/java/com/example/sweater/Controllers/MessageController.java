@@ -142,12 +142,10 @@ public class MessageController {
         return "userMessages";
     }
 
-
     @GetMapping("/edit-messages/{author}")
     public String editMessges(
             @AuthenticationPrincipal User currentUser,
             @PathVariable User author,
-
             Model model,
             @RequestParam(required = false) Message message,
             @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable
@@ -166,6 +164,9 @@ public class MessageController {
         return "editMessages";
     }
 
+
+
+    //Назначение сотрудника
     @PostMapping("/edit-messages/{employee}")
     public String updateMessage(
             @PathVariable User employee,
@@ -182,4 +183,35 @@ public class MessageController {
         return "redirect:/main";
     }
 
+////////////////////////////////Employee////////////////////////////////////////////////
+    @GetMapping("/edit-status/{author}")
+    public String editMessages(
+            @AuthenticationPrincipal User currentUser,
+            @PathVariable User author,
+            Model model,
+            @RequestParam(required = false) Message message,
+            @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable
+
+    ) {
+        Page<Message> page = messageService.messageListForUser(pageable, currentUser, author);
+
+        model.addAttribute("userChannel", author);
+        model.addAttribute("page", page);
+        model.addAttribute("message", message);
+        model.addAttribute("isCurrentUser", currentUser.equals(author));
+        model.addAttribute("url", "/user-messages/" + author.getId());
+
+        model.addAttribute("users", userRepo.findByRole());
+
+        return "editMessagesEmployee";
+    }
+
+    @PostMapping("/edit-status/{author}")
+    public String updatStatusCancel(
+            @RequestParam("id") Message message
+    ) throws IOException {
+        message.setStatus("Отменено");
+        messageRepo.save(message);
+        return "redirect:/";
+    }
 }
