@@ -184,7 +184,7 @@ public class MessageController {
     }
 
 ////////////////////////////////Employee////////////////////////////////////////////////
-    @GetMapping("/edit-status/{author}")
+    @GetMapping("/edit-status/{author}/{status}")
     public String editMessages(
             @AuthenticationPrincipal User currentUser,
             @PathVariable User author,
@@ -206,11 +206,12 @@ public class MessageController {
         return "editMessagesEmployee";
     }
 
-    @PostMapping("/edit-status/{author}")
+    @PostMapping("/edit-status/{author}/{status}")
     public String updatStatusCancel(
+            @PathVariable String status,
             @RequestParam("id") Message message
     ) throws IOException {
-        message.setStatus("Отменено");
+        message.setStatus(status);
         messageRepo.save(message);
         return "redirect:/";
     }

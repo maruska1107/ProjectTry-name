@@ -14,6 +14,7 @@
                 <span>${message.text}</span><br/><br/>
                 <i> Причина обращения: ${message.tag}</i><br/>
                 <i> Дата обращения: ${message.data}</i><br/>
+
                 <span class="badge rounded-pill badge-warning">${message.status}</span>
             </div>
 
@@ -28,7 +29,7 @@
                         </a>
                         </#if>
                         <#if isEmployee>
-                            <a class="col btn btn-success" href="/edit-status/${message.author.id}?message=${message.id}">
+                            <a class="col btn btn-success" href="/edit-status/${message.author.id}/${message.status}?message=${message.id}">
                             Изменить статус
                         </a>
                         </#if>
