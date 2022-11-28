@@ -183,6 +183,37 @@ public class MessageController {
         return "redirect:/main";
     }
 
+    @GetMapping("/statusNew")
+    public String statusNew(@RequestParam(required = false, defaultValue = "Отправлено")
+                         String status, Model model,
+                         @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Message> page = messageService.messageListStatus(pageable, status);
+        model.addAttribute("page", page);
+        model.addAttribute("url", "/main");
+        model.addAttribute("status", status);
+        return "main";
+    }
+    @GetMapping("/statusActive")
+    public String statusActive(@RequestParam(required = false, defaultValue = "В процессе")
+                         String status, Model model,
+                         @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Message> page = messageService.messageListStatus(pageable, status);
+        model.addAttribute("page", page);
+        model.addAttribute("url", "/main");
+        model.addAttribute("status", status);
+        return "main";
+    }
+    @GetMapping("/statusDone")
+    public String statusDone(@RequestParam(required = false, defaultValue = "Завершён")
+                       String status, Model model,
+                       @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Message> page = messageService.messageListStatus(pageable, status);
+        model.addAttribute("page", page);
+        model.addAttribute("url", "/main");
+        model.addAttribute("status", status);
+        return "main";
+    }
+
 ////////////////////////////////Employee////////////////////////////////////////////////
     @GetMapping("/edit-status/{author}/{status}")
     public String editMessages(

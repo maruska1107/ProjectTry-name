@@ -1,5 +1,7 @@
 <#include "security.ftl">
+<#include "navbar2.ftl">
 <#import "pager.ftl" as p>
+
 <@p.pager url page />
 
 <div class="card-columns" id="message-list">
@@ -9,8 +11,6 @@
                 <img src="/img/${message.filename}" class="card-img-top" />
             </#if>
             <div class="m-3">
-
-
                 <span>${message.text}</span><br/><br/>
                 <i> Причина обращения: ${message.tag}</i><br/>
                 <i> Дата обращения: ${message.data}</i><br/>
