@@ -1,21 +1,32 @@
 <#include "security.ftl">
-
+<#if isUser || isAdmin>
 <nav class="navbar navbar-expand-lg navbar-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
     <div class="collapse navbar-collapse" id="navb" name="status">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link border border-success" href="/statusNew">Новые</a>
+            <#if isUser>
+            <li class="nav-item mx-1">
+                <a class="nav-link border border-info text-body" href="/user-messages/${currentUserId}">Все</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link border border-warning" href="/statusActive">Активные</a>
+            <li class="nav-item mx-1">
+                <a class="nav-link border border-warning text-body" href="/statusActiveUser">Активные</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link border border-danger" href="/statusDone">Завершённые</a>
+            </#if>
+            <#if isAdmin>
+            <li class="nav-item mx-1">
+                <a class="nav-link active border border-success text-body" href="/statusNew">Новые</a>
             </li>
+
+            <li class="nav-item mx-1">
+                <a class="nav-link border border-warning text-body" href="/statusActive">Активные</a>
+            </li>
+            <li class="nav-item mx-1">
+                <a class="nav-link border border-danger text-body" href="/statusDone">Завершённые</a>
+            </li>
+            <li class="nav-item mx-1">
+                <a class="nav-link border border-danger text-body" href="/statusDoneByEmployee">Отказанные</a>
+            </li>
+            </#if>
         </ul>
     </div>
 </nav>
+</#if>

@@ -30,7 +30,7 @@
 <div class="container">
     <div class="row align-items-center">
     <div class="col">
-        <form action="/edit-status/${user.id}/${"Отказано"}?message=${message.id}" method="post">
+        <form action="/edit-status/${user.id}/${"Отказано сотрудником"}?message=${message.id}" method="post">
 			<#if isEmployee>
 			    <input type="hidden" name="_csrf" value="${_csrf.token}" />
 				<button class="col btn btn-danger" href="/edit-status/${user.id}/${message.status}?message=${message.id}">

@@ -34,10 +34,10 @@
     <div class="col-6">
         <div class="list-group my-4">
             <li class="list-group-item list-group-item-warning">Информация о сотруднике</li>
-            <li class="list-group-item">${message.employeeName}</li>
-            <li class="list-group-item">${message.employeeNname}</li>
-            <li class="list-group-item">${message.employeeFamily}</li>
-            <li class="list-group-item">${message.employeePatronymic}</li>
+            <li class="list-group-item"><#if message.employeeName??>Пусто<#else>${message.employeeName}</#if></li>
+            <li class="list-group-item"><#if message.employeeNname??>Пусто<#else>${message.employeeNname}</#if></li>
+            <li class="list-group-item"><#if message.employeeFamily??>Пусто<#else>${message.employeeFamily}</#if></li>
+            <li class="list-group-item"><#if message.employeePatronymic??>Пусто<#else>${message.employeePatronymic}</#if></li>
             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Назначить сотрудника
             </button>

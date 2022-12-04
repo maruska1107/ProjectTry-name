@@ -9,7 +9,6 @@
 <div class="form-row">
     <div class="form-group col-md-6">
         <form method="get" action="/main" class="form-inline">
-
         <div class="input-group">
               <select class="form-select" id="inputGroupSelect01" name="filter">
                 <option selected>Поиск по причине</option>
@@ -37,8 +36,7 @@
                 <input type="text" class="form-control" name="text" placeholder="Введите сообщение" />
             </div>
 
-            <div class="input-group">
-              <select class="form-select form-select-lg mb-3" id="inputGroupSelect01" name="tag">
+              <select class="form-select form-select-lg mb-3" " id="inputGroupSelect01" name="tag">
                 <option selected>Выберите...</option>
                 <option value="Установка компьютера">Установка компьютера</option>
                 <option value="Ремонт компьютера">Ремонт компьютера</option>
@@ -47,10 +45,8 @@
                 <option value="Установка программ">Установка программ</option>
                 <option value="Подключение к Интернету">Подключение к Интернету</option>
                 <option value="Срочный ремонт компьютеров">Срочный ремонт компьютеров</option>
+                <option value="Установка компьютера">Другое...</option>
               </select>
-            </div>
-
-
             <div class="form-group">
                 <div class="custom-file">
                     <input type="file" name="file" id="customFile">

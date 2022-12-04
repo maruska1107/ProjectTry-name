@@ -35,25 +35,13 @@ public class UserController {
         return "userEdit";
     }
 
-    @PostMapping
-    public String userSave(
+    @PostMapping("/reg")
+    public String useSave(
             @RequestParam String username,
             @RequestParam Map<String, String> form,
             @RequestParam("userId") User user
-//            @RequestParam String name,
-//            @RequestParam String  family,
-//            @RequestParam String  patronymic,
-//            @RequestParam String  email,
-//            @RequestParam String  phone,
-//            @RequestParam String  address
     ) {
         user.setUsername(username);
-//        user.setName(name);
-//        user.setFamily(family);
-//        user.setPatronymic(patronymic);
-//        user.setEmail(email);
-//        user.setPhone(phone);
-//        user.setAddress(address);
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name)
                 .collect(Collectors.toSet());
@@ -71,6 +59,39 @@ public class UserController {
         return "redirect:/user";
     }
 
+    @PostMapping
+    public String userSave(
+            @RequestParam String username,
+            @RequestParam Map<String, String> form,
+            @RequestParam("userId") User user,
+            @RequestParam String name,
+            @RequestParam String  family,
+            @RequestParam String  patronymic,
+            @RequestParam String  email,
+            @RequestParam String  phone,
+            @RequestParam String  address
+    ) {
+        user.setUsername(username);
+        user.setName(name);
+        user.setFamily(family);
+        user.setPatronymic(patronymic);
+        user.setEmail(email);
+        user.setPhone(phone);
+        user.setAddress(address);
+        Set<String> roles = Arrays.stream(Role.values())
+                .map(Role::name)
+                .collect(Collectors.toSet());
 
+        user.getRoles().clear();
 
+        for (String key : form.keySet()) {
+            if (roles.contains(key)) {
+                user.getRoles().add(Role.valueOf(key));
+            }
+        }
+
+        userRepo.save(user);
+
+        return "redirect:/user";
+    }
 }

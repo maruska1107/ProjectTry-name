@@ -66,6 +66,4 @@
     <input type="hidden" name="_csrf" value="${_csrf.token}" />
     <button class="btn btn-primary" type="submit"><#if name == "unknown">Войти<#else>Выйти</#if></button>
 </form>
-
-
 </#macro>

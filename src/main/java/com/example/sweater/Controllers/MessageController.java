@@ -25,6 +25,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.UUID;
@@ -68,8 +70,8 @@ public class MessageController {
             @RequestParam("file") MultipartFile file
 
     ) throws IOException {
-        LocalDate date = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        ZonedDateTime date = ZonedDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy Время: HH:mm");
         String data = date.format(formatter);
         String status ="Отправлено";
         Message message = new Message(text, tag, user, data,status);
@@ -83,8 +85,6 @@ public class MessageController {
         model.put("messages", messages);
 
         return "main";
-
-
     }
 
     private void saveFile(MultipartFile file, Message message) throws IOException {
@@ -123,15 +123,15 @@ public class MessageController {
         return "userMessages";
     }
 
-    @GetMapping("/employee-messages/{author}")
-    public String employeeMessqges(
+    @GetMapping("/sort-messages/{author}")
+    public String userMessagesSort(
             @AuthenticationPrincipal User currentUser,
             @PathVariable User author,
             Model model,
             @RequestParam(required = false) Message message,
-            @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable
+            @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) Pageable pageable
     ) {
-        Page<Message> page = messageService.messageListForEmployee(pageable, currentUser, author);
+        Page<Message> page = messageService.messageListForUser(pageable, currentUser, author);
 
         model.addAttribute("userChannel", author);
         model.addAttribute("page", page);
@@ -139,6 +139,28 @@ public class MessageController {
         model.addAttribute("isCurrentUser", currentUser.equals(author));
         model.addAttribute("url", "/user-messages/" + author.getId());
 
+        return "userMessages";
+    }
+
+    @GetMapping("/statusActiveUser")
+    public String statusActiveForUser(@RequestParam(required = false, defaultValue = "В процессе")
+                               String status, Model model,
+                               @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Message> page = messageService.messageListStatus(pageable, status);
+        model.addAttribute("page", page);
+        model.addAttribute("url", "/main");
+        model.addAttribute("status", status);
+        return "userMessages";
+    }
+
+    @GetMapping("/statusAllUser")
+    public String statusAllUser(@RequestParam(required = false)
+                                      String status, Model model,
+                                      @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Message> page = messageService.messageListStatus(pageable, status);
+        model.addAttribute("page", page);
+        model.addAttribute("url", "/main");
+        model.addAttribute("status", status);
         return "userMessages";
     }
 
@@ -162,25 +184,6 @@ public class MessageController {
         model.addAttribute("users", userRepo.findByRole());
 
         return "editMessages";
-    }
-
-
-
-    //Назначение сотрудника
-    @PostMapping("/edit-messages/{employee}")
-    public String updateMessage(
-            @PathVariable User employee,
-            @RequestParam("id") Message message
-    ) throws IOException {
-
-            message.setStatus("В процессе");
-
-            message.setEmployee(employee);
-
-        messageRepo.save(message);
-
-
-        return "redirect:/main";
     }
 
     @GetMapping("/statusNew")
@@ -214,7 +217,55 @@ public class MessageController {
         return "main";
     }
 
+
+
 ////////////////////////////////Employee////////////////////////////////////////////////
+
+    @GetMapping("/employee-messages/{author}")
+    public String employeeMessqges(
+            @AuthenticationPrincipal User currentUser,
+            @PathVariable User author,
+            Model model,
+            @RequestParam(required = false) Message message,
+            @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable
+    ) {
+        Page<Message> page = messageService.messageListForEmployee(pageable, currentUser, author);
+
+        model.addAttribute("userChannel", author);
+        model.addAttribute("page", page);
+        model.addAttribute("message", message);
+        model.addAttribute("isCurrentUser", currentUser.equals(author));
+        model.addAttribute("url", "/user-messages/" + author.getId());
+
+        return "userMessages";
+    }
+    //Назначение сотрудника
+    @PostMapping("/edit-messages/{employee}")
+    public String updateMessage(
+            @PathVariable User employee,
+            @RequestParam("id") Message message
+    ) throws IOException {
+
+        message.setStatus("В процессе");
+
+        message.setEmployee(employee);
+
+        messageRepo.save(message);
+
+
+        return "redirect:/main";
+    }
+    @GetMapping("/statusDoneByEmployee")
+    public String statusDoneByEmployee(@RequestParam(required = false, defaultValue = "Отказано сотрудником")
+                                       String status, Model model,
+                                       @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Message> page = messageService.messageListStatus(pageable, status);
+        model.addAttribute("page", page);
+        model.addAttribute("url", "/main");
+        model.addAttribute("status", status);
+        return "main";
+    }
+
     @GetMapping("/edit-status/{author}/{status}")
     public String editMessages(
             @AuthenticationPrincipal User currentUser,
@@ -244,6 +295,6 @@ public class MessageController {
     ) throws IOException {
         message.setStatus(status);
         messageRepo.save(message);
-        return "redirect:/";
+        return "main";
     }
 }
