@@ -34,14 +34,13 @@
     <div class="col-6">
         <div class="list-group my-4">
             <li class="list-group-item list-group-item-warning">Информация о сотруднике</li>
-            <li class="list-group-item"><#if message.employeeName??>Пусто<#else>${message.employeeName}</#if></li>
-            <li class="list-group-item"><#if message.employeeNname??>Пусто<#else>${message.employeeNname}</#if></li>
-            <li class="list-group-item"><#if message.employeeFamily??>Пусто<#else>${message.employeeFamily}</#if></li>
-            <li class="list-group-item"><#if message.employeePatronymic??>Пусто<#else>${message.employeePatronymic}</#if></li>
+            <li class="list-group-item"><#if message.employeeName!="<none>">${message.employeeName}<#else>Пусто</#if></li>
+            <li class="list-group-item"><#if message.employeeNname!="<none>">${message.employeeNname}<#else>Пусто</#if></li>
+            <li class="list-group-item"><#if message.employeeFamily!="<none>">${message.employeeFamily}<#else>Пусто</#if></li>
+            <li class="list-group-item"><#if message.employeePatronymic!="<none>">${message.employeePatronymic}<#else>Пусто</#if></li>
             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Назначить сотрудника
             </button>
-
 
             <input type="hidden" name="_csrf" value="${_csrf.token}" />
             <input type="hidden" name="id" value="<#if message??>${message.id}</#if>" />

@@ -122,7 +122,6 @@ public class MessageController {
 
         return "userMessages";
     }
-
     @GetMapping("/sort-messages/{author}")
     public String userMessagesSort(
             @AuthenticationPrincipal User currentUser,
@@ -146,17 +145,6 @@ public class MessageController {
     public String statusActiveForUser(@RequestParam(required = false, defaultValue = "В процессе")
                                String status, Model model,
                                @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable) {
-        Page<Message> page = messageService.messageListStatus(pageable, status);
-        model.addAttribute("page", page);
-        model.addAttribute("url", "/main");
-        model.addAttribute("status", status);
-        return "userMessages";
-    }
-
-    @GetMapping("/statusAllUser")
-    public String statusAllUser(@RequestParam(required = false)
-                                      String status, Model model,
-                                      @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable) {
         Page<Message> page = messageService.messageListStatus(pageable, status);
         model.addAttribute("page", page);
         model.addAttribute("url", "/main");
@@ -275,7 +263,7 @@ public class MessageController {
             @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable
 
     ) {
-        Page<Message> page = messageService.messageListForUser(pageable, currentUser, author);
+        Page<Message> page = messageService.messageListForEmployee(pageable, currentUser, author);
 
         model.addAttribute("userChannel", author);
         model.addAttribute("page", page);
@@ -290,11 +278,13 @@ public class MessageController {
 
     @PostMapping("/edit-status/{author}/{status}")
     public String updatStatusCancel(
+            @PathVariable User author,
             @PathVariable String status,
             @RequestParam("id") Message message
+
     ) throws IOException {
         message.setStatus(status);
         messageRepo.save(message);
-        return "main";
+        return "redirect:/employee-messages/{author}";
     }
 }

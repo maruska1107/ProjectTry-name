@@ -1,16 +1,12 @@
 <#include "parts/security.ftl">
 <#import "parts/common.ftl" as c>
-
-
 <@c.page>
-
 <#if isAdmin>
-
 <div class="form-row">
     <div class="form-group col-md-6">
         <form method="get" action="/main" class="form-inline">
         <div class="input-group">
-              <select class="form-select" id="inputGroupSelect01" name="filter">
+              <select class="custom-select" id="inputGroupSelect01" name="filter">
                 <option selected>Поиск по причине</option>
                 <option value="Установка компьютера">Установка компьютера</option>
                 <option value="Ремонт компьютера">Ремонт компьютера</option>
@@ -29,15 +25,19 @@
 </#if>
 
 <#if isUser>
-<div>
+<div class="container col-9">
     <div class="form-group mt-3">
         <form method="post" enctype="multipart/form-data">
+
             <div class="form-group">
-                <input type="text" class="form-control" name="text" placeholder="Введите сообщение" />
+              <div class="form-group-prepend">
+                <span class="form-group-text ">Текст сообщения</span>
+              </div>
+              <textarea class="form-control" maxlength="256" name="text" aria-label=""></textarea>
             </div>
 
-              <select class="form-select form-select-lg mb-3" " id="inputGroupSelect01" name="tag">
-                <option selected>Выберите...</option>
+              <select class="custom-select form-select-lg mb-3" " id="inputGroupSelect01" name="tag">
+                <option selected>Причина обращения</option>
                 <option value="Установка компьютера">Установка компьютера</option>
                 <option value="Ремонт компьютера">Ремонт компьютера</option>
                 <option value="Диагностика компьютера">Диагностика компьютера</option>
@@ -45,7 +45,7 @@
                 <option value="Установка программ">Установка программ</option>
                 <option value="Подключение к Интернету">Подключение к Интернету</option>
                 <option value="Срочный ремонт компьютеров">Срочный ремонт компьютеров</option>
-                <option value="Установка компьютера">Другое...</option>
+                <option value="Другое...">Другое...</option>
               </select>
             <div class="form-group">
                 <div class="custom-file">
@@ -56,7 +56,7 @@
 
             <input type="hidden" name="_csrf" value="${_csrf.token}" />
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Добавить</button>
+                <button type="submit" class="btn btn-warning">Отправить заявку</button>
             </div>
         </form>
     </div>
