@@ -1,6 +1,8 @@
+<#include "security.ftl">
 <#macro pager url page>
 <#if page.getTotalPages() gt 7>
 <#assign
+
 totalPages = page.getTotalPages()
             pageNumber = page.getNumber() + 1
 
@@ -16,9 +18,12 @@ totalPages = page.getTotalPages()
     </#if>
     <div class="mt-3">
         <ul class="pagination">
+
             <li class="page-item disabled">
+
                 <a class="page-link" href="#" tabindex="-1">Страницы</a>
             </li>
+
             <#list body as p>
                 <#if (p - 1) == page.getNumber()>
                     <li class="page-item active">
@@ -35,7 +40,7 @@ totalPages = page.getTotalPages()
                 </#if>
             </#list>
         </ul>
-
+<#if isAdmin|| isUser>
             <ul class="pagination">
                 <li class="page-item disabled">
                     <a class="page-link" href="#" tabindex="-1">Элементов на странице</a>
@@ -52,6 +57,7 @@ totalPages = page.getTotalPages()
                     </#if>
                 </#list>
             </ul>
-
+</#if>
     </div>
+
 </#macro>

@@ -3,23 +3,24 @@
 <@c.page>
 <!-- Page Content -->
 <div class="container">
-    <h1 div class="mb-3"> О нас
+    <h1 div class="mb-3 text-info"> О нас
     </h1>
     <div class="row">
       <div class="col-lg-6 ">
         <img class="rounded" src="\photoimage\5.jpg">
       </div>
       <div class="col-lg-6 mb-5">
-        <h2>Описание проекта</h2>
-        <p class="text-danger">Друзья! В период ограничительных мер, в связи с распространением короновируса COVID-19 наш сервис работает в обычном режиме, но с соблюдением мер безопасности и рекомендациями РОСПОТРЕБНАДЗОРА!</p>
+        <h2">Описание проекта</h2>
+<div class="container rounded" style="background-color:#DCDCDC;" >
+        <p class="text-danger">Объявление: Друзья! В период ограничительных мер, в связи с распространением короновируса COVID-19 наш сервис работает в обычном режиме, но с соблюдением мер безопасности и рекомендациями РОСПОТРЕБНАДЗОРА!</p>
+</div>
         <p>Основной вид нашей деятельности направлен на ремонт и модернизацию компьютерной техники, планирование и реализацию сетевых проектов, продажу компьютерной техники. Также мы занимаемся компьютерной безопасностью, защитой информации и восстановлением данных.</p>
         <p>Мы предлагаем Вам быструю и качественную компьютерную помощь. В нашей компании работают опытные специалисты, способные починить системный блок любой конфигурации. Мы проводим диагностику компьютеров и ноутбуков, и устраняем неисправности прямо на месте.</p>
       </div>
     </div>
 
-    <h2> Подробности</h2>
-
-    <div class="row mt-3">
+    <h2> Почему именно мы?</h2>
+    <div class="row mt-2">
       <div class="col-lg-4 mt-3 mb-4">
         <div class="card h-100 text-center border-warning">
           <img class="card-img-top border border-warning" src="\photoimage\3.png" width="50" height="270">
@@ -61,7 +62,7 @@
   <!-- Footer -->
   <footer class="py-4 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">&copy; 2022г "Reneval <br><br>Компьютерная помощь</p>
+      <p class="m-0 text-center text-white">&copy; 2022г "Reneval <br><br>Компьютерная помощь г.Астрахань</p>
     </div>
     <!-- /.container -->
   </footer>
