@@ -7,7 +7,7 @@
     </h1>
     <div class="row">
       <div class="col-lg-6 ">
-        <img class="rounded" src="\img\5.jpg">
+        <img class="rounded" src="\photoimage\5.jpg">
       </div>
       <div class="col-lg-6 mb-5">
         <h2>Описание проекта</h2>
@@ -22,7 +22,7 @@
     <div class="row mt-3">
       <div class="col-lg-4 mt-3 mb-4">
         <div class="card h-100 text-center border-warning">
-          <img class="card-img-top border border-warning" src="\img\3.png" width="50" height="270">
+          <img class="card-img-top border border-warning" src="\photoimage\3.png" width="50" height="270">
           <div class="card-body border border-warning">
             <h4 class="card-title">Более 5 лет на рынке</h4>
 
@@ -33,7 +33,7 @@
       </div>
       <div class="col-lg-4 mt-3 mb-4">
         <div class="card h-100 text-center border-success">
-          <img class="card-img-top border border-success" src="\img\2.png" width="50" height="270" alt="">
+          <img class="card-img-top border border-success" src="\photoimage\2.png" width="50" height="270" alt="">
           <div class="card-body border border-success">
             <h4 class="card-title">Надёжность и качество</h4>
 
@@ -44,7 +44,7 @@
       </div>
       <div class="col-lg-4 mt-3 mb-4">
         <div class="card h-100 text-center border-info">
-          <img class="card-img-top border border-info" src="\img\1.png " width="50" height="270" alt="">
+          <img class="card-img-top border border-info" src="\photoimage\1.png " width="50" height="270" alt="">
           <div class="card-body border border-info">
             <h4 class="card-title">Оперативность</h4>
 
